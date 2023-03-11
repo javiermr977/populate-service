@@ -1,0 +1,48 @@
+spring:
+  datasource:
+    hikari:
+      maxLifetime: 30000
+      connectionTimeout: 20000
+      maximum-pool-size: 12
+      autoCommit: true
+      idleTimeout: 300000
+      minimum-idle: 5
+    driver-class-name: org.postgresql.Driver
+    password: xzqGlGCIscdS9Mkf
+    username: postgres
+    url: jdbc:postgresql://localhost:5432/marvel_db?currentSchema=public
+    platform: postgresql
+  jpa:
+    properties:
+      hibernate:
+        implicit_naming_strategy: default
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: false
+    open-in-view: true
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+info:
+  app:
+    version: 1.0.0
+    name: populate-service
+    description: Api encargada de obtener la info desde marvel y poblar la base de datos local a demanda
+    status: UP
+data-access:
+  marvel-url: https://gateway.marvel.com:443/v1/public/
+  characters-path: characters
+  creators-path: creators
+  stories-path: stories
+config:
+  marvel-api:
+    load-data: false
+    ts: 1
+    publickey: 806f2e3d48b4bcec22c293aa74a95ce8
+    privatekey: 320a49ecf63cdaf461ddb1d2dd0741fb6ee3a716
+    limit: 100
