@@ -1,0 +1,80 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.4.0'
+	id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group = 'com.marvel'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+compileJava.options.encoding = 'UTF-8'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+jar {
+	baseName = 'populate-service'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+ext {
+	set('springCloudVersion', "2020.0.0-SNAPSHOT")
+}
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	//implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	runtimeOnly 'org.postgresql:postgresql'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	//testImplementation 'org.springframework.security:spring-security-test'
+	implementation 'org.modelmapper:modelmapper:2.3.0'
+	//implementation 'io.jsonwebtoken:jjwt-api:0.11.2'
+	
+	implementation 'org.apache.httpcomponents:httpclient'
+	
+	implementation 'org.modelmapper:modelmapper:2.3.0'	
+	
+	implementation group: 'commons-codec', name: 'commons-codec', version: '1.15'
+
+	//runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.2'
+	//runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.2'
+	//implementation 'org.hibernate:hibernate-core'
+	//implementation ('org.springframework.data:spring-data-envers'){
+	     // exclude group: 'org.hibernate', module: 'hibernate-envers'
+	//}
+	//implementation 'org.hibernate:hibernate-envers'	
+	//implementation 'org.springframework.boot:spring-boot-starter-validation'
+	//implementation 'org.springframework.cloud:spring-cloud-starter-openfeign:3.0.0'
+
+	// https://mvnrepository.com/artifact/junit/junit
+	//testImplementation 'junit:junit:4.13.2'
+	// https://mvnrepository.com/artifact/com.h2database/h2
+	//testImplementation 'com.h2database:h2:2.1.214'
+// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator
+	//implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	// https://mvnrepository.com/artifact/org.jsoup/jsoup
+	//implementation 'org.jsoup:jsoup:1.15.3'
+	
+	
+	
+	
+}
+
+test {
+	useJUnitPlatform()
+}
+
